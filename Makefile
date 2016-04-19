@@ -1,2 +1,2 @@
 build:
-	elm make Main.elm --output elm.js
+	elm make --yes Main.elm --output elm.js
