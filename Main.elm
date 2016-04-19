@@ -14,9 +14,21 @@ type alias Model =
   }
 
 
+defaultText = """
+# Markdown example
+
+Put *text* here.
+
+```elm
+main =
+  Html.text "awesome"
+```
+"""
+
+
 init : ( Model, Effects.Effects Action )
 init =
-  ( Model "initial text", Effects.none )
+  ( Model defaultText, Effects.none )
 
 
 type Action
@@ -38,7 +50,7 @@ view : Signal.Address Action -> Model -> Html.Html
 view address model =
   Html.div
     [ Html.class "view" ]
-    [ Html.h1 [] [ Html.text "Markdown editor" ]
+    [ Html.h1 [] [ Html.text "Elm Markdown Editor" ]
     , Html.div
         [ Html.class "pure-g panes" ]
         [ Html.div
@@ -51,7 +63,7 @@ view address model =
                 []
             ]
         , Html.div
-            [ Html.class "pure-u-1-2" ]
+            [ Html.class "pure-u-1-2 display" ]
             [ Markdown.toHtml model.text ]
         ]
     ]
